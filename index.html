@@ -399,6 +399,91 @@ details.sp .body{display:flex;flex-direction:column;gap:6px;margin-top:6px}
 #twarn{gap:0!important}#twarn>*+*{margin-top:6px}
 .pk span{gap:0!important}.pk span::before{margin-right:7px}
 @media (max-width:520px){.trow>.pl{margin-bottom:4px}.atkb{padding:10px}}
+
+/* striscia delle caratteristiche nella parte fissa */
+.mods{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;max-width:1180px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px))}
+.mods span{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:8px;text-align:center;font-family:var(--display);font-weight:800;font-size:16px;line-height:1;padding:5px 0;white-space:nowrap}
+.mods span.k{border-color:var(--bone)}
+.mods b{font-family:var(--body);font-size:10px;letter-spacing:.08em;opacity:.75;margin-right:5px;font-weight:800;vertical-align:1px}
+@media (max-width:420px){.mods{gap:4px}.mods span{font-size:14px;padding:4px 0}.mods b{display:block;margin:0 0 2px;font-size:9px}}
+/* combattimento: ordine per uso; su tablet e PC il turno a sinistra */
+.cgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:10px}
+@media (min-width:621px){.cgrid{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);grid-template-areas:"mio turno" "mio pf" "mio ris" "rea rip";grid-template-rows:auto auto 1fr auto;align-items:start}
+.a-turno{grid-area:turno}.a-mio{grid-area:mio}.a-pf{grid-area:pf}.a-ris{grid-area:ris}.a-rea{grid-area:rea}.a-rip{grid-area:rip}.a-mio{align-self:stretch}}
+.sech{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--leaf);margin:0 0 8px}
+
+/* caratteristiche in cima a Combattimento (versione chiara) */
+.mods.lite{padding:0;margin:0 0 10px;max-width:none}
+.mods.lite span{background:var(--card);border:1px solid var(--line);color:var(--ink);padding:8px 0;font-size:20px}
+.mods.lite span.k{border:2px solid var(--leaf)}
+.mods.lite b{color:var(--soft);opacity:1;font-size:11px}
+@media (max-width:420px){.mods.lite span{font-size:17px;padding:6px 0}}
+/* difesa e movimento: nome a sinistra, valore a destra */
+.dm5{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))!important;gap:8px!important}
+.dm5 div{display:grid!important;grid-template-columns:1fr 1fr;align-items:center;padding:8px 0!important}
+.dm5 div span,.dm5 div b{text-align:center;font-family:var(--display);font-weight:800;font-size:22px!important;line-height:1.1;color:inherit}
+.dm5 div span{font-size:21px!important;color:var(--ink);opacity:.8;border-right:1px solid var(--line);letter-spacing:.02em}
+.dm5 .ac span{color:var(--bone)!important;opacity:1;border-right-color:rgba(255,255,255,.25)}
+.dm5 .ac b{font-size:26px!important}
+
+/* caratteristiche: nome sopra, modificatore e TS affiancati */
+.abx .ab{padding:8px 6px}
+.abx .ab .n{font-size:14px;letter-spacing:.14em}
+.abx .ab .n small{font-family:var(--body);font-weight:700;letter-spacing:0;color:var(--soft);margin-left:4px;font-size:13px}
+.abx .mt{display:grid;grid-template-columns:1fr 1fr;margin-top:4px}
+.abx .mt>div{display:flex;flex-direction:column;align-items:center}
+.abx .mt>div+div{border-left:1px solid var(--line)}
+.abx .mt b{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.1}
+.abx .mt span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.abx .mt .tsp b,.abx .mt .tsp span{color:var(--blue)}
+.abx{margin-bottom:10px}
+.dm5 div{grid-template-columns:1.25fr 1fr!important}.dm5 div span{padding:0 6px}
+@media (max-width:620px){.abx .mt b{font-size:22px}}
+.dm5 div span{white-space:nowrap}
+@media (max-width:420px){.dm5 div span{font-size:17px!important}}
+
+/* scheda: colonna stretta a sinistra (caratteristiche, abilità), il resto a destra */
+.sh2{display:grid;grid-template-columns:minmax(280px,360px) minmax(0,1fr);gap:14px;align-items:start}
+.shL,.shR{display:flex;flex-direction:column;gap:14px;min-width:0}
+@media (min-width:1001px){.sh2{align-items:stretch!important}.shL>:last-child,.shR>:last-child{flex-grow:1}}
+@media (max-width:1000px){.sh2{display:flex;flex-direction:column;align-items:stretch;gap:10px}.shL,.shR{display:contents}.o1{order:1}.o2{order:2}.o3{order:3}.o4{order:4}.o5{order:5}.o6{order:6}}
+.ctab{display:grid;grid-template-columns:auto 1fr 1fr 1fr;align-items:center;row-gap:0}
+.ctab>*{padding:5px 0;border-bottom:1px dashed var(--line);text-align:center}
+.ctab>:nth-last-child(-n+4){border-bottom:0}
+.ctab .hd{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);padding-top:0}
+.ctab b{text-align:left;font-size:14px;letter-spacing:.12em;color:var(--leaf);font-weight:800;padding-right:10px}
+.ctab b.key{color:var(--jungle)}
+.ctab b.key::after{content:" ●";font-size:9px;color:var(--leaf);vertical-align:2px}
+.ctab .sc{color:var(--soft);font-size:15px}
+.ctab .md,.ctab .ts{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.15}
+.ctab .ts.tp{color:var(--blue)}
+.sk{padding:4px 0!important;gap:8px!important;font-size:15px}
+.sk .v{width:30px}
+.dm5{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.dm5 div{grid-template-columns:auto minmax(0,1fr)!important}
+.dm5 div span{font-size:17px!important;padding:0 10px!important}
+.dm5 div b{font-size:21px!important}
+@media (max-width:620px){.dm5{grid-template-columns:repeat(2,minmax(0,1fr))!important}.dm5 .ac{grid-column:1/-1}.dm5 div{grid-template-columns:1fr 1fr!important}}
+
+.o7{order:7}.o8{order:8}.o9{order:9}
+.atab .rules.r0{margin:0;padding-top:0;border-top:0;font-size:14px}
+.cantoc .cchips{display:flex;flex-wrap:wrap;gap:6px}
+.cantoc .cchips span{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:14px;color:var(--soft)}
+.cantoc .cchips b{color:var(--ink);font-family:var(--display);font-size:16px}
+.cantoc h3 .chip{font-size:12px}
+
+.atab .al{display:flex;flex-direction:column}
+.atab .ar{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:8px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.atab .ar:last-child{border-bottom:0}
+.atab .ar b{font-size:15px}
+.atab .ar .hit{font-family:var(--display);font-weight:800;color:var(--blue);font-size:17px;grid-row:1 / span 2;grid-column:2;align-self:center;text-align:right;min-width:34px}
+.atab .ar .dmg{font-size:14px;font-weight:600}
+.atab .ar small{font-size:12.5px;color:var(--soft);font-weight:400}
+.atab .ar .dmg{grid-column:1}
+.atab .rules{margin:8px 0 0;padding:8px 0 0 16px;border-top:1px solid var(--line);font-size:13px;color:var(--soft)}
+.atab .rules li{margin:2px 0}
+.shR .feat{padding:6px 0}
+.atab .rules b{color:var(--ink)}
 /* telefono: intestazione su due righe, quattro riquadri sempre dentro lo schermo */
 html,body{overflow-x:clip}
 /* telefono: intestazione fissa ma compatta */
@@ -423,9 +508,9 @@ html,body{overflow-x:clip}
     <button class="cantobtn" id="cantoBtn" type="button">Attiva Canto</button>
   </div>
   <nav class="tabs" role="tablist" aria-label="Sezioni della scheda">
+    <button class="tab" role="tab" id="t-skill" aria-controls="skill" aria-selected="false">Scheda</button>
     <button class="tab" role="tab" id="t-combat" aria-controls="combat" aria-selected="true">Combattimento</button>
     <button class="tab" role="tab" id="t-spell" aria-controls="spell" aria-selected="false">Incantesimi</button>
-    <button class="tab" role="tab" id="t-skill" aria-controls="skill" aria-selected="false">Abilità e privilegi</button>
     <button class="tab" role="tab" id="t-bag" aria-controls="bag" aria-selected="false">Zaino</button>
     <button class="tab" role="tab" id="t-lore" aria-controls="lore" aria-selected="false">Storia</button>
   </nav>
@@ -444,54 +529,14 @@ html,body{overflow-x:clip}
     <div><b>Concentrazione in pericolo</b><span id="csTxt"></span></div>
     <div class="row"><button class="btn p sm" id="csOk" type="button">Superato</button><button class="btn r sm" id="csKo" type="button">Fallito</button></div>
   </div>
-  <div class="grid g3 tight">
-    <div class="card">
-      <h3>Punti ferita <span class="muted small num" id="hpTmpL"></span></h3>
-      <div class="hpline"><span class="cur num" id="hpCur">56</span><span class="max">/ 56</span>
-        <input class="n" id="hpAmt" type="number" inputmode="numeric" min="0" value="5" aria-label="Quantità"></div>
-      <div class="hpbar"><i id="hpBar" style="width:100%"></i></div>
-      <div class="row">
-        <button class="btn r sm" id="bDmg" type="button">Danno</button>
-        <button class="btn p sm" id="bHeal" type="button">Cura</button>
-        <button class="btn b sm" id="bTmp" type="button">PF temp</button>
+  <div class="cgrid">
+      <div class="card a-turno">
+        <h3>Turno <span class="num" id="rndV">—</span> <span class="chip" id="reactChip">Reazione pronta</span></h3>
+        <div class="row"><button class="btn p sm" id="bRound" type="button">Inizio del tuo turno</button><button class="btn sm" id="bEnd" type="button">Fine scontro</button></div>
+        <div class="effs" id="effs" style="margin-top:8px"></div>
+        <p class="muted small" id="effEmpty" style="margin:6px 0 0">Nessun effetto attivo.</p>
       </div>
-      <div class="alert" id="concAlert" hidden></div>
-      <div class="alert" id="mirrorAlert" hidden></div>
-    </div>
-    <div class="card">
-      <h3>Difesa e movimento</h3>
-      <div class="dm5">
-        <div class="ac"><b class="num" id="acBig">18</b><span>CA</span></div>
-        <div><b>+5</b><span>Iniz.</span></div>
-        <div><b id="spd">9 m</b><span>Vel.</span></div>
-        <div><b>+3</b><span>Comp.</span></div>
-        <div><b>14</b><span>Passiva</span></div>
-      </div>
-      <p class="muted small" id="acWhy" style="margin:6px 0 0">Scaglie Corazzate</p>
-    </div>
-    <div class="card">
-      <h3>Risorse</h3>
-      <div class="res2">
-        <span>Slot 1°</span><div class="pips" data-g="s1"></div>
-        <span>Slot 2°</span><div class="pips" data-g="s2"></div>
-        <span>Slot 3°</span><div class="pips" data-g="s3"></div>
-        <span>Canto</span><div class="pips" data-g="canto"></div>
-        <span>Dadi vita</span><div class="pips" data-g="hd"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="abil" style="margin-top:10px">
-    <div class="ab"><div class="n">FOR</div><div class="m">−1</div><div class="ts">8 · TS −1</div></div>
-    <div class="ab key"><div class="n">DES</div><div class="m">+5</div><div class="ts">20 · TS +5</div></div>
-    <div class="ab"><div class="n">COS</div><div class="m">+3</div><div class="ts">16 · TS +3</div></div>
-    <div class="ab key"><div class="n">INT</div><div class="m">+5</div><div class="ts">20 · TS <b>+8</b></div></div>
-    <div class="ab"><div class="n">SAG</div><div class="m">+1</div><div class="ts">12 · TS <b>+4</b></div></div>
-    <div class="ab"><div class="n">CAR</div><div class="m">+2</div><div class="ts">15 · TS +2</div></div>
-  </div>
-
-  <div class="grid g3 tight" style="margin-top:10px">
-    <div class="card span2">
+    <div class="card a-mio">
       <h3>Il tuo turno <button class="btn sm" id="bClear" type="button">Azzera</button></h3>
       <div class="turnbox">
         <div class="trow"><span class="pl">Bonus</span><div class="rc"><select id="t_ba" aria-label="Azione bonus"><option value="none">Nessuna azione bonus</option><option value="canto">Canto della Lama</option><option value="passo">Passo Velato</option><option value="ombraL">Lancia Lama d'Ombra</option><option value="ombraR">Richiama la Lama d'Ombra</option><option value="poz">Bevi una pozione</option></select></div></div>
@@ -516,14 +561,30 @@ html,body{overflow-x:clip}
         <p class="muted small" style="margin:2px 0 0">Con Velocità attiva hai un colpo in più con l'arma, anche se con l'azione lanci un incantesimo.</p>
       </div>
     </div>
-    <div class="stack">
-      <div class="card">
-        <h3>Turno <span class="num" id="rndV">—</span> <span class="chip" id="reactChip">Reazione pronta</span></h3>
-        <div class="row"><button class="btn p sm" id="bRound" type="button">Inizio del tuo turno</button><button class="btn sm" id="bEnd" type="button">Fine scontro</button></div>
-        <div class="effs" id="effs" style="margin-top:8px"></div>
-        <p class="muted small" id="effEmpty" style="margin:6px 0 0">Nessun effetto attivo.</p>
+    <div class="card a-pf">
+      <h3>Punti ferita <span class="muted small num" id="hpTmpL"></span></h3>
+      <div class="hpline"><span class="cur num" id="hpCur">56</span><span class="max">/ 56</span>
+        <input class="n" id="hpAmt" type="number" inputmode="numeric" min="0" value="5" aria-label="Quantità"></div>
+      <div class="hpbar"><i id="hpBar" style="width:100%"></i></div>
+      <div class="row">
+        <button class="btn r sm" id="bDmg" type="button">Danno</button>
+        <button class="btn p sm" id="bHeal" type="button">Cura</button>
+        <button class="btn b sm" id="bTmp" type="button">PF temp</button>
       </div>
-      <div class="card">
+      <div class="alert" id="concAlert" hidden></div>
+      <div class="alert" id="mirrorAlert" hidden></div>
+    </div>
+    <div class="card a-ris">
+      <h3>Risorse</h3>
+      <div class="res2">
+        <span>Slot 1°</span><div class="pips" data-g="s1"></div>
+        <span>Slot 2°</span><div class="pips" data-g="s2"></div>
+        <span>Slot 3°</span><div class="pips" data-g="s3"></div>
+        <span>Canto</span><div class="pips" data-g="canto"></div>
+        <span>Dadi vita</span><div class="pips" data-g="hd"></div>
+      </div>
+    </div>
+      <div class="card a-rea">
         <h3>Reazioni e altro</h3>
         <div class="qa">
           <button class="btn b sm" id="bShield" type="button">Scudo<small>slot 1° · +5 CA</small></button>
@@ -535,7 +596,7 @@ html,body{overflow-x:clip}
         </div>
         <div class="out" id="reactOut" hidden></div>
       </div>
-      <div class="card">
+      <div class="card a-rip">
       <h3>Riposi e morte</h3>
       <div class="res2">
         <span>Successi</span><div class="pips" data-g="dsS"></div>
@@ -552,9 +613,7 @@ html,body{overflow-x:clip}
         <span class="muted small" id="arcState"></span>
       </div>
     </div>
-    </div>
   </div>
-
 </section>
 
 <!-- INCANTESIMI -->
@@ -582,22 +641,66 @@ html,body{overflow-x:clip}
 <!-- ABILITÀ -->
 <section role="tabpanel" id="skill" aria-labelledby="t-skill" hidden>
   <div class="grid g3">
-    <details class="card span3">
-      <summary><h3 style="display:inline">Tabella attacchi e regole</h3></summary>
-      <div class="tw" style="margin-top:8px"><table>
-        <thead><tr><th>Colpo</th><th>Colpire</th><th>Danni</th></tr></thead>
-        <tbody>
-          <tr><td class="n">Itzli +1</td><td class="h">+9</td><td class="dm">1d8+6 perf. · Perforare, Contrattacco</td></tr>
-          <tr><td class="n">Lama Rimbombante</td><td class="h">+9</td><td class="dm">Itzli + 1d8 tuono · se si sposta 2d8</td></tr>
-          <tr><td class="n">Fuoco Verde</td><td class="h">+9</td><td class="dm">Itzli + 1d8 fuoco · 2° bersaglio 1d8+5</td></tr>
-          <tr><td class="n">Lama d'Ombra</td><td class="h">+8</td><td class="dm">2d8+5 psichici · vantaggio al buio</td></tr>
-          <tr><td class="n">Pugnale</td><td class="h">+8</td><td class="dm">1d4+5 perf. · Punto debole</td></tr>
-          <tr><td class="n">Dardo di Fuoco</td><td class="h">+8</td><td class="dm">2d10 fuoco · 36 m</td></tr>
-        </tbody>
-      </table></div>
-      <p class="muted small" style="margin:8px 0 0">Azione: 2 attacchi (3 con Velocità, il terzo solo con un'arma), uno dei primi due può essere un trucchetto. Una sola azione bonus e una sola reazione per turno. Incantesimo come azione bonus: con l'azione solo trucchetti, ma gli attacchi vanno bene.</p>
-    </details>
+    <div class="span3"><h3 class="sech">Caratteristiche e tiri salvezza</h3>
+  <div class="abil abx">
+    <div class="ab"><div class="n">FOR <small>8</small></div><div class="mt"><div><b>−1</b><span>mod</span></div><div class=""><b>−1</b><span>TS</span></div></div></div>
+    <div class="ab key"><div class="n">DES <small>20</small></div><div class="mt"><div><b>+5</b><span>mod</span></div><div class=""><b>+5</b><span>TS</span></div></div></div>
+    <div class="ab"><div class="n">COS <small>16</small></div><div class="mt"><div><b>+3</b><span>mod</span></div><div class=""><b>+3</b><span>TS</span></div></div></div>
+    <div class="ab key"><div class="n">INT <small>20</small></div><div class="mt"><div><b>+5</b><span>mod</span></div><div class="tsp"><b>+8</b><span>TS</span></div></div></div>
+    <div class="ab"><div class="n">SAG <small>12</small></div><div class="mt"><div><b>+1</b><span>mod</span></div><div class="tsp"><b>+4</b><span>TS</span></div></div></div>
+    <div class="ab"><div class="n">CAR <small>15</small></div><div class="mt"><div><b>+2</b><span>mod</span></div><div class=""><b>+2</b><span>TS</span></div></div></div>
+    </div>
+    </div>
     <div class="card span3">
+      <h3>Difesa e movimento</h3>
+      <div class="dm5">
+        <div class="ac"><span>CA</span><b class="num" id="acBig">18</b></div>
+        <div><span>Iniz.</span><b>+5</b></div>
+        <div><span>Vel.</span><b id="spd">9 m</b></div>
+        <div><span>Comp.</span><b>+3</b></div>
+        <div><span>Perc. Pass.</span><b>14</b></div>
+      </div>
+      <p class="muted small" id="acWhy" style="margin:6px 0 0">Scaglie Corazzate</p>
+    </div>
+    <div class="sh2 span3">
+    <div class="shL">
+    <div class="card o3">
+      <h3>Abilità</h3>
+      <div id="skills"></div>
+      <p class="muted small" style="margin:8px 0 0">Acrobazia è l'abilità extra della guida, con vantaggio col Canto. Furtività: vantaggio per nasconderti dopo Pelle Camaleontica.</p>
+    </div>
+    <div class="card o8 atab">
+      <h3>Attacchi</h3>
+      <div class="al">
+        <div class="ar"><b>Itzli +1</b><span class="hit">+9</span><span class="dmg">1d8+6 perforanti <small>· Perforare, Contrattacco</small></span></div>
+        <div class="ar"><b>Lama Rimbombante</b><span class="hit">+9</span><span class="dmg">Itzli + 1d8 tuono <small>· se si sposta: 2d8 tuono</small></span></div>
+        <div class="ar"><b>Lama di Fuoco Verde</b><span class="hit">+9</span><span class="dmg">Itzli + 1d8 fuoco <small>· 2° bersaglio: 1d8+5 fuoco</small></span></div>
+        <div class="ar"><b>Lama d'Ombra</b><span class="hit">+8</span><span class="dmg">2d8+5 psichici <small>· vantaggio in penombra o al buio</small></span></div>
+        <div class="ar"><b>Pugnale</b><span class="hit">+8</span><span class="dmg">1d4+5 perforanti <small>· Punto debole · lancio 6/18 m</small></span></div>
+        <div class="ar"><b>Dardo di Fuoco</b><span class="hit">+8</span><span class="dmg">2d10 fuoco <small>· incantesimo · 36 m</small></span></div>
+      </div>
+    </div>
+    </div>
+    <div class="shR">
+    <div class="card o4 cantoc">
+      <h3>Canto della Lama <span class="chip">bonus · 1 min · 3 al giorno</span></h3>
+      <div class="cchips"><span><b>+5 CA</b> (23)</span><span><b>+3 m</b> velocità</span><span><b>Vant.</b> Acrobazia</span><span><b>+5</b> TS concentrazione</span></div>
+      <p class="muted small" style="margin:6px 0 0">Le scaglie impallidiscono, placche e muso restano rossi. Termina se sei incapacitato, con scudo o armatura media o pesante, o attaccando con un'arma a due mani.</p>
+    </div>
+    <div class="card o5">
+      <h3>Mago · Lamacantante</h3>
+      <div class="feat"><b>Incantesimi</b><span class="tg">Intelligenza</span> 11 preparati dal libro dopo ogni riposo lungo.</div>
+      <div class="feat"><b>Rituali</b><span class="tg">+10 minuti</span> dal libro anche non preparati, senza slot.</div>
+      <div class="feat"><b>Recupero Arcano</b><span class="tg">1 al giorno</span> dopo un riposo breve recuperi slot per 3 livelli.</div>
+      <div class="feat"><b>Addestramento alla Guerra e al Canto</b> armature leggere, stocco, Intrattenere.</div>
+      <div class="feat"><b>Attacco Extra</b><span class="tg">6° livello</span> 2 attacchi; uno può diventare un trucchetto.</div>
+    </div>
+    <div class="card o6 cantoc">
+      <h3>Il famiglio · Tlaco</h3>
+      <p style="margin:0 0 8px">Rana arboricola verde smeraldo con le zampe arancioni, sempre sull'elmo-teschio. Telepatia entro 30 m; con un'azione vedi e senti attraverso di lei. Con Aiutare ti dà vantaggio al primo attacco.</p>
+      <div class="cchips"><span><b>11</b> CA</span><span><b>1</b> PF</span><span><b>6 m</b> velocità e nuoto</span><span><b>9 m</b> scurovisione</span></div>
+    </div>
+    <div class="card o7">
       <h3>Abilità delle armi</h3>
       <div class="grid g2">
         <div class="feat"><b>Perforare</b><span class="tg">base</span> +2 al tiro per colpire contro creature con CA 16 o più. Si dichiara prima di tirare.</div>
@@ -607,27 +710,16 @@ html,body{overflow-x:clip}
       </div>
       <p class="muted small" style="margin:8px 0 0">Itzli: casella Perforante · Una mano. Pugnali: Perforante · Leggera. Una sola abilità per colpo; Lama Rimbombante e Fuoco Verde usano le abilità di Itzli. Contrattacco usa la stessa reazione di Scudo: se il colpo ti prende usa Scudo, se ti manca contrattacca. Più avanti: Azzoppare o Punto debole con il +2.</p>
     </div>
-    <div class="card">
-      <h3>Abilità</h3>
-      <div id="skills"></div>
-      <p class="muted small" style="margin:8px 0 0">Acrobazia è l'abilità extra della guida, con vantaggio col Canto. Furtività: vantaggio per nasconderti dopo Pelle Camaleontica.</p>
+    <div class="card o9 atab">
+      <h3>Regole del turno</h3>
+      <ul class="rules r0">
+        <li><b>Azione:</b> 2 attacchi; 3 con Velocità (il terzo solo con un'arma).</li>
+        <li>Uno dei primi due può essere un trucchetto.</li>
+        <li>Una sola azione bonus e una sola reazione per turno.</li>
+        <li>Incantesimo con l'azione bonus: con l'azione solo trucchetti, ma gli attacchi vanno bene.</li>
+      </ul>
     </div>
-    <div class="card span2">
-      <h3>Canto della Lama</h3>
-      <p style="margin:0 0 8px">Azione bonus, 1 minuto, 3 volte per riposo lungo. Le scaglie impallidiscono fino al bianco perla; placche e punta del muso restano rosso acceso.</p>
-      <div class="stats4">
-        <div class="st4"><div class="v">+5</div><div class="l">CA (da 18 a 23)</div></div>
-        <div class="st4"><div class="v">+3 m</div><div class="l">velocità</div></div>
-        <div class="st4"><div class="v">Vant.</div><div class="l">Acrobazia</div></div>
-        <div class="st4"><div class="v">+5</div><div class="l">TS concentrazione</div></div>
-      </div>
-      <p class="muted small" style="margin:10px 0 0">Termina se sei incapacitato, se usi uno scudo o un'armatura media o pesante, o se attacchi con un'arma a due mani.</p>
-      <h3 style="margin-top:18px">Mago · Lamacantante</h3>
-      <div class="feat"><b>Incantesimi</b><span class="tg">Intelligenza</span> 11 preparati dal libro dopo ogni riposo lungo.</div>
-      <div class="feat"><b>Rituali</b><span class="tg">+10 minuti</span> dal libro anche non preparati, senza slot.</div>
-      <div class="feat"><b>Recupero Arcano</b><span class="tg">1 al giorno</span> dopo un riposo breve recuperi slot per 3 livelli.</div>
-      <div class="feat"><b>Addestramento alla Guerra e al Canto</b> armature leggere, stocco, Intrattenere.</div>
-      <div class="feat"><b>Attacco Extra</b><span class="tg">6° livello</span> 2 attacchi; uno può diventare un trucchetto.</div>
+    </div>
     </div>
     <div class="card">
       <h3>Uomo Lucertola Camaleonte</h3>
@@ -654,16 +746,6 @@ html,body{overflow-x:clip}
       <div class="feat"><b>Abilità extra</b> Acrobazia.</div>
       <div class="feat"><b>Arma +1</b> Itzli, con Perforare e Contrattacco.</div>
       <div class="feat"><b>Regola della casa</b> nessuna per ora.</div>
-    </div>
-    <div class="card">
-      <h3>Il famiglio · Tlaco</h3>
-      <p style="margin:0 0 8px">Rana arboricola verde smeraldo con le zampe arancioni, sempre sull'elmo-teschio. Telepatia entro 30 m; con un'azione vedi e senti attraverso di lei. Con Aiutare ti dà vantaggio al primo attacco.</p>
-      <div class="stats4">
-        <div class="st4"><div class="v">11</div><div class="l">CA</div></div>
-        <div class="st4"><div class="v">1</div><div class="l">PF</div></div>
-        <div class="st4"><div class="v">6 m</div><div class="l">velocità e nuoto</div></div>
-        <div class="st4"><div class="v">9 m</div><div class="l">scurovisione</div></div>
-      </div>
     </div>
   </div>
 </section>
@@ -916,7 +998,7 @@ const WT={
   pug:{n:"Pugnale",hit:8,dmg:"1d4+5 perforanti",dc:"2d4+5",note:"se colpisce: Punto debole, vantaggio al prossimo attacco contro di lui"},
   fb:{n:"Dardo di Fuoco",hit:8,dmg:"2d10 fuoco",dc:"4d10",cantrip:1,note:"a distanza, 36 m"}
 };
-function T(){if(!S.turn)S.turn=JSON.parse(JSON.stringify(TDEF));return S.turn}
+function T(){if(!S.turn||S.turn.act===undefined)S.turn=Object.assign(JSON.parse(JSON.stringify(TDEF)),S.turn||{},{act:(S.turn&&S.turn.act)||"atk"});return S.turn}
 function ombraOk(){return S.conc==="Lama d'Ombra"}
 function atkHTML(slot){const t=T(),k=t["a"+slot];if(!k||k==="none")return "";const w=WT[k];
   if(w.shadow&&!ombraOk())return `<div class="ri w">Lama d'Ombra: lanciala prima con l'azione bonus (riga Bonus).</div>`;
@@ -933,7 +1015,7 @@ const ACTROLL={mm:"Slot 1°: tira <b>3d4 + 3</b> forza, colpisce sempre. Ogni li
 function bonusSpell(){const b=T().ba;return b==="passo"||b==="ombraL"}
 function actHTML(){const t=T(),a=t.act;if(a==="atk")return "";
   if(ACTX[a])return `<div class="ri">${ACTX[a]()}</div>`;
-  const nm=ACTS[a],s=SP.find(x=>x.n===nm);
+  const nm=ACTS[a],s=SP.find(x=>x.n===nm);if(!s)return "";
   if(t.actDone)return `<div class="ri"><span><b>${nm}</b> lanciato.</span>${ACTROLL[a]?`<span>${ACTROLL[a]}</span>`:""}</div>`;
   let btn="";for(let l=s.lv;l<=3;l++)btn+=`<button class="btn sm ${l===s.lv?"p":""}" type="button" data-cast="${l}" ${S.used[l]>=SLOTMAX[l]?"disabled":""}>Slot ${l}° · ${SLOTMAX[l]-S.used[l]} rimasti</button>`;
   const cw=s.conc&&S.conc&&S.conc!==nm?`<small>Hai già ${S.conc} in concentrazione: lanciarlo lo termina (la scheda ti chiede conferma).</small>`:s.conc?`<small>Concentrazione.</small>`:"";
