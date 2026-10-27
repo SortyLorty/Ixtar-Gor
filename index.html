@@ -365,6 +365,21 @@ details.sp .body{display:flex;flex-direction:column;gap:6px;margin-top:6px}
 .pk input:disabled+span{opacity:.35}
 .trow .pk input:checked+span{background:var(--blue);border-color:var(--blue);color:#fff}
 @media (max-width:520px){.trow{grid-template-columns:1fr;gap:4px}}
+
+/* blocchi dei colpi: arma, poi tre opzioni in colonne uguali, poi i tiri */
+.turnbox{gap:12px}
+.atkb{display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px dashed var(--line)}
+.atkb .trow{align-items:start}
+.atkb .pl{padding-top:12px}
+.atkb .rc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.atkb .rc select{grid-column:1/-1;width:100%;flex:none}
+.atkb .pk{display:block;min-width:0}
+.atkb .pk span{display:flex;justify-content:center;width:100%;min-height:40px;padding:6px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.atkb .ro{margin-left:84px}
+#atkRows{display:flex;flex-direction:column;gap:12px}
+#atkRows[hidden],#row3[hidden]{display:none}
+.trow + .ro,.atkb .ro{margin-top:0}
+@media (max-width:520px){.atkb .ro{margin-left:0}.atkb .pl{padding-top:0}.atkb .pk span{font-size:13px;padding:6px 4px}}
 /* telefono: intestazione su due righe, quattro riquadri sempre dentro lo schermo */
 html,body{overflow-x:hidden}
 @media (max-width:620px){.vitals{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:6px}.vt{padding:4px 4px;min-width:0}.vt .v{font-size:22px}.vt .l{font-size:10px;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.top .in{gap:8px;padding-block:8px}.cantobtn{min-height:44px;font-size:15px}.tabs .tab{padding:8px 12px}.card{padding:12px}}
@@ -464,17 +479,17 @@ html,body{overflow-x:hidden}
         <div class="ro" id="o_act"></div>
         <div id="atkRows">
         <div class="trow"><span class="pl">Ambiente</span><div class="rc"><label class="pk sm"><input type="checkbox" id="t_tla"><span>Tlaco aiuta (1° colpo)</span></label><label class="pk sm"><input type="checkbox" id="t_dim"><span>Penombra o buio</span></label></div></div>
-        <div class="trow"><span class="pl">1° colpo</span><div class="rc"><select id="t_a1" aria-label="1° colpo"><option value="none">Nessun attacco</option><option value="itzli">Itzli +1</option><option value="bb">Lama Rimbombante</option><option value="gfb">Lama di Fuoco Verde</option><option value="ombra">Lama d'Ombra</option><option value="pug">Pugnale</option><option value="fb">Dardo di Fuoco</option></select>
+        <div class="atkb"><div class="trow"><span class="pl">1° colpo</span><div class="rc"><select id="t_a1" aria-label="1° colpo"><option value="none">Nessun attacco</option><option value="itzli">Itzli +1</option><option value="bb">Lama Rimbombante</option><option value="gfb">Lama di Fuoco Verde</option><option value="ombra">Lama d'Ombra</option><option value="pug">Pugnale</option><option value="fb">Dardo di Fuoco</option></select>
           <label class="pk sm"><input type="checkbox" id="t_p1"><span>Perforare</span></label><label class="pk sm"><input type="checkbox" id="t_v1"><span>Vantaggio</span></label><label class="pk sm"><input type="checkbox" id="t_d1"><span>Svantaggio</span></label></div></div>
-        <div class="ro" id="o_a1"></div>
-        <div class="trow"><span class="pl">2° colpo</span><div class="rc"><select id="t_a2" aria-label="2° colpo"><option value="none">Nessun attacco</option><option value="itzli">Itzli +1</option><option value="bb">Lama Rimbombante</option><option value="gfb">Lama di Fuoco Verde</option><option value="ombra">Lama d'Ombra</option><option value="pug">Pugnale</option><option value="fb">Dardo di Fuoco</option></select>
+        <div class="ro" id="o_a1"></div></div>
+        <div class="atkb"><div class="trow"><span class="pl">2° colpo</span><div class="rc"><select id="t_a2" aria-label="2° colpo"><option value="none">Nessun attacco</option><option value="itzli">Itzli +1</option><option value="bb">Lama Rimbombante</option><option value="gfb">Lama di Fuoco Verde</option><option value="ombra">Lama d'Ombra</option><option value="pug">Pugnale</option><option value="fb">Dardo di Fuoco</option></select>
           <label class="pk sm"><input type="checkbox" id="t_p2"><span>Perforare</span></label><label class="pk sm"><input type="checkbox" id="t_v2"><span>Vantaggio</span></label><label class="pk sm"><input type="checkbox" id="t_d2"><span>Svantaggio</span></label></div></div>
-        <div class="ro" id="o_a2"></div>
+        <div class="ro" id="o_a2"></div></div>
         </div>
         <div id="row3" hidden>
-        <div class="trow"><span class="pl" id="l3">3° colpo</span><div class="rc"><select id="t_a3" aria-label="3° colpo"><option value="none">Nessun attacco</option><option value="itzli">Itzli +1</option><option value="ombra">Lama d'Ombra</option><option value="pug">Pugnale</option></select>
+        <div class="atkb"><div class="trow"><span class="pl" id="l3">3° colpo</span><div class="rc"><select id="t_a3" aria-label="3° colpo"><option value="none">Nessun attacco</option><option value="itzli">Itzli +1</option><option value="ombra">Lama d'Ombra</option><option value="pug">Pugnale</option></select>
           <label class="pk sm"><input type="checkbox" id="t_p3"><span>Perforare</span></label><label class="pk sm"><input type="checkbox" id="t_v3"><span>Vantaggio</span></label><label class="pk sm"><input type="checkbox" id="t_d3"><span>Svantaggio</span></label></div></div>
-        <div class="ro" id="o_a3"></div>
+        <div class="ro" id="o_a3"></div></div>
         </div>
         <div id="twarn"></div>
         <p class="muted small" style="margin:2px 0 0">Con Velocità attiva hai un colpo in più con l'arma, anche se con l'azione lanci un incantesimo.</p>
