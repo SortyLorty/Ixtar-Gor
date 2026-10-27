@@ -380,6 +380,25 @@ details.sp .body{display:flex;flex-direction:column;gap:6px;margin-top:6px}
 #atkRows[hidden],#row3[hidden]{display:none}
 .trow + .ro,.atkb .ro{margin-top:0}
 @media (max-width:520px){.atkb .ro{margin-left:0}.atkb .pl{padding-top:0}.atkb .pk span{font-size:13px;padding:6px 4px}}
+
+/* distanze con margini (funzionano anche sui Safari vecchi che ignorano gap nei flex) */
+.turnbox,.atkb,#atkRows{gap:0!important}
+.turnbox>*+*,#atkRows>*+*{margin-top:14px}
+.turnbox>.ro,.atkb>.ro{margin-top:8px}
+.atkb{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:10px 12px 12px}
+.atkb>*+*{margin-top:10px}
+.rc{gap:0!important;margin:-4px}
+.rc>*{margin:4px}
+.atkb .rc{display:grid;gap:8px!important;margin:0}
+.atkb .rc>*{margin:0}
+.ro .ri .ln{gap:0!important}
+.ro .ri .ln>span{margin:0 16px 2px 0}
+.ro .ri>*+*{margin-top:4px}
+.ro .row{gap:0!important;margin:2px -4px -4px}
+.ro .row>*{margin:4px}
+#twarn{gap:0!important}#twarn>*+*{margin-top:6px}
+.pk span{gap:0!important}.pk span::before{margin-right:7px}
+@media (max-width:520px){.trow>.pl{margin-bottom:4px}.atkb{padding:10px}}
 /* telefono: intestazione su due righe, quattro riquadri sempre dentro lo schermo */
 html,body{overflow-x:hidden}
 @media (max-width:620px){.vitals{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:6px}.vt{padding:4px 4px;min-width:0}.vt .v{font-size:22px}.vt .l{font-size:10px;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.top .in{gap:8px;padding-block:8px}.cantobtn{min-height:44px;font-size:15px}.tabs .tab{padding:8px 12px}.card{padding:12px}}
