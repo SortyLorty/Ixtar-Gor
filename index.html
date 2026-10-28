@@ -484,6 +484,18 @@ details.sp .body{display:flex;flex-direction:column;gap:6px;margin-top:6px}
 .atab .rules li{margin:2px 0}
 .shR .feat{padding:6px 0}
 .atab .rules b{color:var(--ink)}
+
+details.privs>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+details.privs>summary::-webkit-details-marker{display:none}
+details.privs>summary h3{margin:0}
+details.privs>summary .muted::after{content:" ▾"}
+details.privs[open]>summary .muted::after{content:" ▴"}
+details.privs>summary::after{content:none!important}
+details.privs .card{background:var(--card2)}
+details.privs .cantoc .cchips span{background:var(--card)}
+@media (min-width:1001px){.sh2{align-items:stretch!important}}
+#arcRow.hot{background:var(--blue-soft);border-radius:10px;padding:6px 8px}
+.ritb{white-space:nowrap}
 /* telefono: intestazione su due righe, quattro riquadri sempre dentro lo schermo */
 html,body{overflow-x:clip}
 /* telefono: intestazione fissa ma compatta */
@@ -603,6 +615,7 @@ html,body{overflow-x:clip}
         <span>Fallimenti</span><div class="pips" data-g="dsF"></div>
       </div>
       <div class="row" style="margin-top:8px">
+        <button class="btn sm" id="bShort" type="button">Riposo breve</button>
         <button class="btn sm" id="bHd" type="button">Spendi un dado vita</button>
         <button class="btn p sm" id="bLong" type="button">Riposo lungo</button>
       </div>
@@ -640,8 +653,7 @@ html,body{overflow-x:clip}
 
 <!-- ABILITÀ -->
 <section role="tabpanel" id="skill" aria-labelledby="t-skill" hidden>
-  <div class="grid g3">
-    <div class="span3"><h3 class="sech">Caratteristiche e tiri salvezza</h3>
+  <div class="span3"><h3 class="sech">Caratteristiche e tiri salvezza</h3>
   <div class="abil abx">
     <div class="ab"><div class="n">FOR <small>8</small></div><div class="mt"><div><b>−1</b><span>mod</span></div><div class=""><b>−1</b><span>TS</span></div></div></div>
     <div class="ab key"><div class="n">DES <small>20</small></div><div class="mt"><div><b>+5</b><span>mod</span></div><div class=""><b>+5</b><span>TS</span></div></div></div>
@@ -651,7 +663,7 @@ html,body{overflow-x:clip}
     <div class="ab"><div class="n">CAR <small>15</small></div><div class="mt"><div><b>+2</b><span>mod</span></div><div class=""><b>+2</b><span>TS</span></div></div></div>
     </div>
     </div>
-    <div class="card span3">
+  <div class="card">
       <h3>Difesa e movimento</h3>
       <div class="dm5">
         <div class="ac"><span>CA</span><b class="num" id="acBig">18</b></div>
@@ -662,14 +674,27 @@ html,body{overflow-x:clip}
       </div>
       <p class="muted small" id="acWhy" style="margin:6px 0 0">Scaglie Corazzate</p>
     </div>
-    <div class="sh2 span3">
+  <div class="sh2" style="margin-top:14px">
     <div class="shL">
-    <div class="card o3">
+    <div class="card o1">
       <h3>Abilità</h3>
       <div id="skills"></div>
       <p class="muted small" style="margin:8px 0 0">Acrobazia è l'abilità extra della guida, con vantaggio col Canto. Furtività: vantaggio per nasconderti dopo Pelle Camaleontica.</p>
     </div>
-    <div class="card o8 atab">
+    </div>
+    <div class="shR">
+    <div class="card o2">
+      <h3>Risorse</h3>
+      <div class="res2">
+        <span>Slot 1°</span><div class="pips" data-g="s1"></div>
+        <span>Slot 2°</span><div class="pips" data-g="s2"></div>
+        <span>Slot 3°</span><div class="pips" data-g="s3"></div>
+        <span>Canto</span><div class="pips" data-g="canto"></div>
+        <span>Dadi vita</span><div class="pips" data-g="hd"></div>
+      </div>
+      <p class="muted small" style="margin:6px 0 0">Sono gli stessi pallini di Combattimento: se ne tocchi uno qui, cambia anche là.</p>
+    </div>
+    <div class="card o3 atab">
       <h3>Attacchi</h3>
       <div class="al">
         <div class="ar"><b>Itzli +1</b><span class="hit">+9</span><span class="dmg">1d8+6 perforanti <small>· Perforare, Contrattacco</small></span></div>
@@ -681,13 +706,11 @@ html,body{overflow-x:clip}
       </div>
     </div>
     </div>
-    <div class="shR">
-    <div class="card o4 cantoc">
-      <h3>Canto della Lama <span class="chip">bonus · 1 min · 3 al giorno</span></h3>
-      <div class="cchips"><span><b>+5 CA</b> (23)</span><span><b>+3 m</b> velocità</span><span><b>Vant.</b> Acrobazia</span><span><b>+5</b> TS concentrazione</span></div>
-      <p class="muted small" style="margin:6px 0 0">Le scaglie impallidiscono, placche e muso restano rossi. Termina se sei incapacitato, con scudo o armatura media o pesante, o attaccando con un'arma a due mani.</p>
-    </div>
-    <div class="card o5">
+  </div>
+  <details class="card privs" style="margin-top:14px">
+    <summary><h3>Privilegi, talenti e regole</h3><span class="muted small">Canto, mago, Tlaco, armi, razza, background, talento</span></summary>
+    <div class="grid g3" style="margin-top:12px">
+    <div class="card span2">
       <h3>Mago · Lamacantante</h3>
       <div class="feat"><b>Incantesimi</b><span class="tg">Intelligenza</span> 11 preparati dal libro dopo ogni riposo lungo.</div>
       <div class="feat"><b>Rituali</b><span class="tg">+10 minuti</span> dal libro anche non preparati, senza slot.</div>
@@ -695,22 +718,17 @@ html,body{overflow-x:clip}
       <div class="feat"><b>Addestramento alla Guerra e al Canto</b> armature leggere, stocco, Intrattenere.</div>
       <div class="feat"><b>Attacco Extra</b><span class="tg">6° livello</span> 2 attacchi; uno può diventare un trucchetto.</div>
     </div>
-    <div class="card o6 cantoc">
+    <div class="card cantoc">
       <h3>Il famiglio · Tlaco</h3>
       <p style="margin:0 0 8px">Rana arboricola verde smeraldo con le zampe arancioni, sempre sull'elmo-teschio. Telepatia entro 30 m; con un'azione vedi e senti attraverso di lei. Con Aiutare ti dà vantaggio al primo attacco.</p>
       <div class="cchips"><span><b>11</b> CA</span><span><b>1</b> PF</span><span><b>6 m</b> velocità e nuoto</span><span><b>9 m</b> scurovisione</span></div>
     </div>
-    <div class="card o7">
-      <h3>Abilità delle armi</h3>
-      <div class="grid g2">
-        <div class="feat"><b>Perforare</b><span class="tg">base</span> +2 al tiro per colpire contro creature con CA 16 o più. Si dichiara prima di tirare.</div>
-        <div class="feat"><b>Contrattacco</b><span class="tg">+1 · reazione</span> Quando una creatura ti manca con un attacco in mischia, puoi attaccarla con Itzli.</div>
-        <div class="feat"><b>Pugnali · Punto debole</b><span class="tg">base</span> Se colpisci, hai vantaggio al tuo prossimo attacco contro quel bersaglio, prima della fine del tuo prossimo turno.</div>
-        <div class="feat"><b>Lama d'Ombra</b><span class="tg">nessuna</span> Le armi create da incantesimi non hanno abilità (guida del tavolo).</div>
-      </div>
-      <p class="muted small" style="margin:8px 0 0">Itzli: casella Perforante · Una mano. Pugnali: Perforante · Leggera. Una sola abilità per colpo; Lama Rimbombante e Fuoco Verde usano le abilità di Itzli. Contrattacco usa la stessa reazione di Scudo: se il colpo ti prende usa Scudo, se ti manca contrattacca. Più avanti: Azzoppare o Punto debole con il +2.</p>
+    <div class="card span2 cantoc">
+      <h3>Canto della Lama <span class="chip">bonus · 1 min · 3 al giorno</span></h3>
+      <div class="cchips"><span><b>+5 CA</b> (23)</span><span><b>+3 m</b> velocità</span><span><b>Vant.</b> Acrobazia</span><span><b>+5</b> TS concentrazione</span></div>
+      <p class="muted small" style="margin:6px 0 0">Le scaglie impallidiscono, placche e muso restano rossi. Termina se sei incapacitato, con scudo o armatura media o pesante, o attaccando con un'arma a due mani.</p>
     </div>
-    <div class="card o9 atab">
+    <div class="card atab">
       <h3>Regole del turno</h3>
       <ul class="rules r0">
         <li><b>Azione:</b> 2 attacchi; 3 con Velocità (il terzo solo con un'arma).</li>
@@ -719,7 +737,15 @@ html,body{overflow-x:clip}
         <li>Incantesimo con l'azione bonus: con l'azione solo trucchetti, ma gli attacchi vanno bene.</li>
       </ul>
     </div>
-    </div>
+    <div class="card span3">
+      <h3>Abilità delle armi</h3>
+      <div class="grid g2">
+        <div class="feat"><b>Perforare</b><span class="tg">base</span> +2 al tiro per colpire contro creature con CA 16 o più. Si dichiara prima di tirare.</div>
+        <div class="feat"><b>Contrattacco</b><span class="tg">+1 · reazione</span> Quando una creatura ti manca con un attacco in mischia, puoi attaccarla con Itzli.</div>
+        <div class="feat"><b>Pugnali · Punto debole</b><span class="tg">base</span> Se colpisci, hai vantaggio al tuo prossimo attacco contro quel bersaglio, prima della fine del tuo prossimo turno.</div>
+        <div class="feat"><b>Lama d'Ombra</b><span class="tg">nessuna</span> Le armi create da incantesimi non hanno abilità (guida del tavolo).</div>
+      </div>
+      <p class="muted small" style="margin:8px 0 0">Itzli: casella Perforante · Una mano. Pugnali: Perforante · Leggera. Una sola abilità per colpo; Lama Rimbombante e Fuoco Verde usano le abilità di Itzli. Contrattacco usa la stessa reazione di Scudo: se il colpo ti prende usa Scudo, se ti manca contrattacca. Più avanti: Azzoppare o Punto debole con il +2.</p>
     </div>
     <div class="card">
       <h3>Uomo Lucertola Camaleonte</h3>
@@ -747,7 +773,8 @@ html,body{overflow-x:clip}
       <div class="feat"><b>Arma +1</b> Itzli, con Perforare e Contrattacco.</div>
       <div class="feat"><b>Regola della casa</b> nessuna per ora.</div>
     </div>
-  </div>
+    </div>
+  </details>
 </section>
 
 <!-- ZAINO -->
@@ -839,7 +866,7 @@ html,body{overflow-x:clip}
 <script>
 (function(){
 const MAXHP=56, SLOTMAX={1:4,2:3,3:3};
-const DEF={hp:56,tmp:0,used:{1:0,2:0,3:0},canto:0,cantoOn:false,shield:false,conc:"",arc:false,hd:0,dsS:0,dsF:0,razioni:10,torce:10,otre:true,pozioni:"",indizi:"",mr:0,ma:0,mo:0,mp:0,tab:"combat",v2:0,concDC:0,turn:null,
+const DEF={hp:56,tmp:0,used:{1:0,2:0,3:0},canto:0,cantoOn:false,shield:false,conc:"",arc:false,hd:0,dsS:0,dsF:0,razioni:10,torce:10,otre:true,pozioni:"",indizi:"",mr:0,ma:0,mo:0,mp:0,tab:"combat",v2:0,sr:false,concDC:0,turn:null,
   round:0,react:false,eff:{},absorb:0,ombraDn:2,copies:0,weakNext:false,weakNow:false,
   plan:{ba:"",step:"cfg",baDone:false,tlaco:false,dim:false,dis:false,a:[{w:"itzli",p:false,v:false,r:""},{w:"bb",p:false,v:false,r:""},{w:"itzli",p:false,v:false,r:""}]}};
 let S=JSON.parse(JSON.stringify(DEF));
@@ -917,7 +944,7 @@ function renderStatus(){
     const seg=ce<=10?ce:10;$("cbBar").innerHTML=ce<=10?Array.from({length:10},(_,i)=>`<i class="${i<seg?"on":""}"></i>`).join(""):"";}
   const cs=$("concSave");cs.hidden=!(S.conc&&S.concDC);if(!cs.hidden)$("csTxt").textContent="Hai preso danni mentre mantieni "+S.conc+". Tira 1d20 + "+concMod()+(S.cantoOn?" (con il Canto)":"")+": CD "+S.concDC+".";
   const cb=$("concBar");cb.hidden=!S.conc;$("concTxt").textContent=S.conc?"Concentrazione: "+S.conc+" · TS Cos +"+concMod():"";
-  $("arcState").textContent=S.arc?"già usato oggi":"";document.querySelectorAll("[data-arc]").forEach(b=>b.disabled=S.arc);
+  $("arcState").textContent=S.arc?"già usato oggi":S.sr?"scegli gli slot da recuperare":"dopo un riposo breve";document.querySelectorAll("[data-arc]").forEach(b=>b.disabled=S.arc||!S.sr);$("arcRow").classList.toggle("hot",S.sr&&!S.arc);
   $("bHd").disabled=S.hd>=6;
   $("bShield").disabled=S.react||S.shield||S.used[1]>=4;
   $("bAbsorb").disabled=S.react||S.used[1]>=4;
@@ -982,13 +1009,13 @@ $("bRound").addEventListener("click",()=>{if(S.round>0){for(const k of Object.ke
   if(S.absorb)S.absorb--;
   S.weakNow=S.weakNext;S.weakNext=false;
   if(S.conc&&S.eff[S.conc]){const r=S.eff[S.conc].r;if(r<=3)toast(S.conc+": restano "+r+(r===1?" turno":" turni"))}
-  S.round++;S.react=false;$("reactOut").hidden=true;resetTurn();renderAll();save()});
+  S.round++;S.react=false;S.sr=false;$("reactOut").hidden=true;resetTurn();renderAll();save()});
 $("bEnd").addEventListener("click",()=>{for(const k of Object.keys(S.eff)){if(S.eff[k].r<=10){if(S.conc===k)endConc(true);expire(k)}}
   Object.assign(S,{cantoOn:false,shield:false,round:0,react:false,absorb:0,weakNext:false,weakNow:false});resetTurn();
   $("reactOut").hidden=true;toast("Fine scontro: gli effetti da 1 minuto sono terminati");renderAll();save()});
 
 /* --- il tuo turno: scelte fisse (mai ridisegnate), si aggiornano solo i riquadri dei tiri --- */
-const TDEF={ba:"none",act:"atk",actDone:false,a1:"none",a2:"none",a3:"none",p1:false,v1:false,d1:false,p2:false,v2:false,d2:false,p3:false,v3:false,d3:false,tla:false,dim:false};
+const TDEF={ba:"none",act:"atk",actDone:false,actL:0,a1:"none",a2:"none",a3:"none",p1:false,v1:false,d1:false,p2:false,v2:false,d2:false,p3:false,v3:false,d3:false,tla:false,dim:false};
 const TFLAGS=["p1","v1","d1","p2","v2","d2","p3","v3","d3","tla","dim"];
 const WT={
   itzli:{n:"Itzli +1",hit:9,dmg:"1d8+6 perforanti",dc:"2d8+6",pierce:1},
@@ -1016,7 +1043,11 @@ function bonusSpell(){const b=T().ba;return b==="passo"||b==="ombraL"}
 function actHTML(){const t=T(),a=t.act;if(a==="atk")return "";
   if(ACTX[a])return `<div class="ri">${ACTX[a]()}</div>`;
   const nm=ACTS[a],s=SP.find(x=>x.n===nm);if(!s)return "";
-  if(t.actDone)return `<div class="ri"><span><b>${nm}</b> lanciato.</span>${ACTROLL[a]?`<span>${ACTROLL[a]}</span>`:""}</div>`;
+  if(t.actDone){const l=t.actL||s.lv;let r=ACTROLL[a]||"";
+    if(a==="mm"){const n=3+(l-1);r=`Tira <b>${n}d4 + ${n}</b> forza · ${n} dardi, colpiscono sempre. Puoi dividerli tra più bersagli.`}
+    if(a==="fireball"){const n=8+(l-3);r=`TS Destrezza <b>CD 16</b> nella sfera di 6 m: <b>${n}d6</b> fuoco, metà se riesce.`}
+    if(a==="invis"&&l>=3)r="Con lo slot di 3° puoi rendere invisibili due creature (tu e un alleato).";
+    return `<div class="ri"><span><b>${nm}</b> lanciato con slot di ${l}°.</span>${r?`<span>${r}</span>`:""}</div>`}
   let btn="";for(let l=s.lv;l<=3;l++)btn+=`<button class="btn sm ${l===s.lv?"p":""}" type="button" data-cast="${l}" ${S.used[l]>=SLOTMAX[l]?"disabled":""}>Slot ${l}° · ${SLOTMAX[l]-S.used[l]} rimasti</button>`;
   const cw=s.conc&&S.conc&&S.conc!==nm?`<small>Hai già ${S.conc} in concentrazione: lanciarlo lo termina (la scheda ti chiede conferma).</small>`:s.conc?`<small>Concentrazione.</small>`:"";
   return `<div class="ri"><span>${s.t}</span>${ACTROLL[a]?`<span>${ACTROLL[a]}</span>`:""}${cw}<div class="row">${btn}</div></div>`}
@@ -1057,23 +1088,29 @@ $("bClear").addEventListener("click",()=>{resetTurn();save()});
 
 /* --- conferma prima di sostituire la concentrazione --- */
 let pending=null;
-function askConc(nm,l){const r=S.eff[S.conc]?S.eff[S.conc].r:0;pending={nm,l};
+function askConc(nm,l,rit){const r=S.eff[S.conc]?S.eff[S.conc].r:0;pending={nm,l,rit};
   $("cfTxt").textContent="Stai già mantenendo "+S.conc+(r?" ("+durTxt(r)+" rimasti)":"")+". Lanciare "+nm+" lo termina"+(S.conc==="Velocità"?" e perdi il tuo prossimo turno":"")+". Vuoi davvero terminarlo?";
   $("cfYes").textContent="Sì, termina "+S.conc;$("confirm").hidden=false;$("cfNo").focus()}
 $("cfNo").addEventListener("click",()=>{pending=null;$("confirm").hidden=true;toast("Nessun incantesimo lanciato")});
-$("cfYes").addEventListener("click",()=>{const p=pending;pending=null;$("confirm").hidden=true;if(p)castSpell(p.nm,p.l,true)});
+$("cfYes").addEventListener("click",()=>{const p=pending;pending=null;$("confirm").hidden=true;if(p)castSpell(p.nm,p.l,true,p.rit)});
 
 /* --- riposi --- */
 $("bHd").addEventListener("click",()=>{if(S.hd>=6)return;S.hd++;toast("Tira 1d6+3 e aggiungi il risultato con Cura");renderAll();save()});
+let shortArm=null;$("bShort").addEventListener("click",()=>{const b=$("bShort");
+  if(!shortArm){b.textContent="Tocca di nuovo: 1 ora di riposo";shortArm=setTimeout(()=>{shortArm=null;b.textContent="Riposo breve"},4000);return}
+  clearTimeout(shortArm);shortArm=null;b.textContent="Riposo breve";
+  for(const k of Object.keys(S.eff)){if(S.eff[k].r<=600){if(S.conc===k)endConc(true);expire(k)}}
+  Object.assign(S,{cantoOn:false,shield:false,round:0,react:false,absorb:0,weakNext:false,weakNow:false,sr:true});resetTurn();
+  toast(S.arc?"Riposo breve: spendi i dadi vita (1d6+3 ciascuno)":"Riposo breve: spendi i dadi vita (1d6+3) e usa il Recupero Arcano");renderAll();save()});
 let longArm=null;$("bLong").addEventListener("click",()=>{const b=$("bLong");
   if(!longArm){b.textContent="Tocca di nuovo per confermare";longArm=setTimeout(()=>{longArm=null;b.textContent="Riposo lungo"},4000);return}
   clearTimeout(longArm);longArm=null;b.textContent="Riposo lungo";
-  Object.assign(S,{hp:MAXHP,tmp:0,used:{1:0,2:0,3:0},canto:0,cantoOn:false,shield:false,conc:"",arc:false,dsS:0,dsF:0,hd:Math.max(0,S.hd-3),eff:{},round:0,react:false,absorb:0,copies:0,weakNext:false,weakNow:false});S.plan.baDone=false;
+  Object.assign(S,{sr:false,hp:MAXHP,tmp:0,used:{1:0,2:0,3:0},canto:0,cantoOn:false,shield:false,conc:"",arc:false,dsS:0,dsF:0,hd:Math.max(0,S.hd-3),eff:{},round:0,react:false,absorb:0,copies:0,weakNext:false,weakNow:false});S.plan.baDone=false;
   toast("Riposo lungo: PF, slot e Canti recuperati");renderAll();save()});
 document.querySelectorAll("[data-arc]").forEach(b=>b.addEventListener("click",()=>{if(S.arc)return;const parts=b.dataset.arc.split("").map(Number);
   const need={};parts.forEach(l=>need[l]=(need[l]||0)+1);
   if(Object.keys(need).some(l=>S.used[l]<need[l])){toast("Non hai abbastanza slot spesi di quel livello");return}
-  parts.forEach(l=>S.used[l]--);S.arc=true;toast("Recupero Arcano usato");renderAll();save()}));
+  parts.forEach(l=>S.used[l]--);S.arc=true;S.sr=false;toast("Recupero Arcano usato");renderAll();save()}));
 
 /* --- zaino --- */
 document.querySelectorAll("[data-ctr]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.ctr;S[k]=Math.max(0,S[k]+Number(b.dataset.d));renderAll();save()}));
@@ -1100,7 +1137,7 @@ const SP=[
  {lv:1,n:"Comprensione dei Linguaggi",k:"ri",c:["rituale","1 ora"],t:"Capisci ogni lingua parlata; leggi i testi che tocchi.",q:"lettere, mappe, iscrizioni.",rit:1,d:600},
  {lv:2,n:"Passo Velato",k:"b",c:["azione bonus","9 m"],t:"Ti teletrasporti in uno spazio libero che vedi entro 9 m.",q:"uscire da una presa o da un accerchiamento."},
  {lv:2,n:"Lama d'Ombra",k:"b",c:["azione bonus","conc. 1 minuto"],t:"Stocco d'ombra leggero e accurato, 2d8+5 psichici, lancio 6/18 m. Vantaggio se il bersaglio è in penombra o al buio. Con slot di 3°: 3d8. Non ha abilità d'arma.",q:"scontri lunghi contro un nemico robusto, al buio.",conc:1,d:10,fx:"ombra"},
- {lv:2,n:"Immagine Speculare",k:"a",c:["azione","1 minuto","niente concentrazione"],t:"3 copie illusorie. Quando ti attaccano tira un d20: colpisce una copia con 6+ (3 copie), 8+ (2), 11+ (1).",q:"quando sei il bersaglio principale. La scheda tira il d20 per te.",d:10,fx:"mirror"},
+ {lv:2,n:"Immagine Speculare",k:"a",c:["azione","1 minuto","niente concentrazione"],t:"3 copie illusorie. Quando ti attaccano tira un d20: colpisce una copia con 6+ (3 copie), 8+ (2), 11+ (1).",q:"quando sei il bersaglio principale. Quando ti attaccano tira un d20 e segna le copie colpite.",d:10,fx:"mirror"},
  {lv:2,n:"Ragnatela",k:"a",c:["azione","18 m","conc. 1 ora"],t:"Cubo di 6 m di ragnatele. TS Des CD 16: se fallisce è trattenuto (liberarsi: prova di Forza CD 16).",q:"bloccare un corridoio. Con Dardo di Fuoco brucia: 2d4.",conc:1,d:600},
  {lv:2,n:"Invisibilità",k:"a",c:["azione","contatto","conc. 1 ora"],t:"Invisibile finché non attacca o lancia un incantesimo. Con slot di 3°: due creature.",q:"infiltrazione e fuga.",conc:1,d:600},
  {lv:3,n:"Velocità",k:"a",c:["azione","9 m","conc. 1 minuto"],t:"Velocità doppia, +2 CA, vantaggio ai TS Des, un'azione extra (un attacco, Scatto, Disimpegno, Nascondersi, Usare un Oggetto). Se finisce, perdi il turno successivo.",q:"scontri importanti, col Canto attivo.",conc:1,d:10},
@@ -1112,15 +1149,15 @@ const KC={a:"",b:"bonus",r:"react",ri:"rit"};
 const lvName=["TRUCCHETTI","1° LIVELLO","2° LIVELLO","3° LIVELLO"];
 let html="";[0,1,2,3].forEach(lv=>{html+=`<div class="lvhead"><span class="b">${lvName[lv]}</span><span class="ln"></span>${lv?`<span class="muted small">${SLOTMAX[lv]} slot</span>`:'<span class="muted small">illimitati</span>'}</div><div class="grid g3">`;
   SP.filter(s=>s.lv===lv).forEach(s=>{const chips=s.c.map((c,j)=>`<span class="chip ${j===0?(s.k==="ri"?"ri":s.k):(c.startsWith("conc")?"c":"")}">${c}</span>`).join("");
-    let btn="";if(lv){btn=`<div class="act row">${s.rit?'<span class="muted small">Rituale: anche senza slot.</span>':""}`;for(let l=lv;l<=3;l++)btn+=`<button class="btn sm ${l===lv?"p":""} cast" type="button" data-n="${s.n}" data-l="${l}" data-k="${s.k}">Slot ${l}°</button>`;btn+="</div>"}
+    let btn="";if(lv){btn=`<div class="act row">${s.rit?`<button class="btn sm b ritb" type="button" data-n="${s.n}" data-l="${lv}">Come rituale · senza slot</button>`:""}`;for(let l=lv;l<=3;l++)btn+=`<button class="btn sm ${l===lv?"p":""} cast" type="button" data-n="${s.n}" data-l="${l}" data-k="${s.k}">Slot ${l}°</button>`;btn+="</div>"}
     html+=`<details class="sp ${KC[s.k]}"><summary><span class="nm">${s.n}</span><span class="chips">${chips}</span></summary><div class="body"><p>${s.t}</p><p class="q"><b>Quando:</b> ${s.q}</p>${btn}</div></details>`});
   html+="</div>"});
 $("spellList").innerHTML=html;
-function castSpell(nm,l,force){const s=SP.find(x=>x.n===nm);
-  if(S.used[l]>=SLOTMAX[l]){toast("Nessuno slot di "+l+"°");return}
-  if(s.conc&&S.conc&&!force){askConc(nm,l);return}
+function castSpell(nm,l,force,rit){const s=SP.find(x=>x.n===nm);
+  if(!rit&&S.used[l]>=SLOTMAX[l]){toast("Nessuno slot di "+l+"°");return}
+  if(s.conc&&S.conc&&!force){askConc(nm,l,rit);return}
   if(s.k==="r"&&!useReact())return;
-  S.used[l]++;let m=nm+": usato uno slot di "+l+"°";
+  let m;if(rit){m=nm+" come rituale: nessuno slot, 10 minuti in più"}else{S.used[l]++;m=nm+": usato uno slot di "+l+"°"}
   if(s.conc){if(S.conc){const was=S.conc;endConc(true);m+=". "+was+" è terminato"+(was==="Velocità"?": perdi il tuo prossimo turno":"")}S.conc=nm}
   if(s.d)S.eff[nm]={r:s.d,c:s.conc?1:0};
   if(s.fx==="shield"){S.shield=true;S.eff["Scudo"]={r:1,c:0};m+=". CA "+ac()}
@@ -1130,9 +1167,10 @@ function castSpell(nm,l,force){const s=SP.find(x=>x.n===nm);
   if(s.fx==="mm"){const n=3+(l-1);showSpell("Tira "+n+"d4 + "+n+" forza",n+" dardi da 1d4+1, colpiscono sempre. Puoi dividerli tra più bersagli: ogni dardo è un TS separato per la concentrazione.")}
   if(s.fx==="fireball"){const n=8+(l-3);showSpell("Tira "+n+"d6 fuoco","TS Destrezza CD 16 per chi è nella sfera di 6 m: chi lo supera prende metà.")}
   if(s.fx==="counter"){if(l>=3)m+=". Annulla gli incantesimi fino al "+l+"° livello; per quelli superiori tira d20+5 contro CD 10 + livello"}
-  const tt=T();if(ACTS[tt.act]===nm)tt.actDone=true;
+  const tt=T();if(ACTS[tt.act]===nm){tt.actDone=true;tt.actL=l}
   toast(m);renderAll();save()}
 document.querySelectorAll(".cast").forEach(b=>b.addEventListener("click",()=>castSpell(b.dataset.n,+b.dataset.l)));
+document.querySelectorAll(".ritb").forEach(b=>b.addEventListener("click",()=>castSpell(b.dataset.n,+b.dataset.l,false,true)));
 
 /* --- tab --- */
 const tabs=[...document.querySelectorAll(".tab")];
